@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block middle %}
+
+
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>WARNING:</strong> {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+
+
+  <div class="container mt-5 mb-5 pt-5 pb-5 " style="border:2px solid grey;">
+    <form method="post"  enctype="multipart/form-data" >
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label for="inputAddress2">Title</label>
+          <input type="text" class="form-control" name='title' id="inputAddress2" placeholder="Title for post">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Body</label>
+          <textarea class="form-control" placeholder="add body for your post" name="body" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="inputAddress2">Slug</label>
+          <input type="text" class="form-control" name="slug" id="inputAddress2" placeholder="add slug (any text probably the title)">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlFile1">Image</label>
+          <input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
+        </div>
+
+        <hr>
+        <input type="submit" value="ADD" class="btn btn-info">
+      </form>
+  </div>
+
+
+{% endblock middle %}
+
+
+
+{% block ending %}
+{% endblock ending %}
+
